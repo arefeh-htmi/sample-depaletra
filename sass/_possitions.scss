@@ -1,0 +1,111 @@
+/*positions*/ 
+.fixed{
+	position: fixed;
+}
+.absolute {
+	position: absolute;
+}
+.relative {
+	position: relative;
+}
+.top0{
+	top: 0;
+}
+.left0 {
+	left: 0;
+}
+.bottom0 {
+	bottom: 0;
+}
+.right0{
+	right: 0;
+}
+.overFlowHidden{
+    overflow: hidden;
+}
+.overFlowAuto{
+    overflow: auto;
+}
+.horizentalCenter{
+    left: 50%;
+    transform: translateX(-50%);
+}
+.centerObject{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.verticalCenter{
+    top: 50%;
+    transform: translateY(-50%);
+}
+/*displays & flex*/ 
+.dispaly-block{
+	display: block;
+}
+.display-inline{
+	display: inline;
+}
+.display-inline-block{
+	display: inline-block;
+}
+.display-flex{
+	display: flex;
+}
+.dirColumn{
+	flex-direction: column;  
+}
+.flexWrap{
+	flex-wrap: wrap;
+}
+.jcCenter{
+	justify-content: center;
+}
+.jcStart{
+	justify-content: flex-start;
+}
+.jcEnd{
+	justify-content: flex-end;
+}
+.jcBetween{
+	justify-content: space-between;
+}
+.jcAround{
+	justify-content: space-around;
+}
+.jcEvenly{
+
+	justify-content: space-evenly;
+}
+.aiCenter{
+	align-items: center;
+}
+.aiStart{
+	align-items: flex-start;
+}
+.aiEnd{
+	align-items: flex-end;
+}
+.aiBase{
+	align-items: baseline;
+}
+.aiStrech{
+	align-items: stretch;
+}
+.acCenter{
+	align-content: center;
+}
+.acStart{
+	align-content: flex-start;
+}
+.acEvenly{
+	align-content: space-evenly;
+}
+.acAround{
+	align-content: space-around;
+}
+.acBetween{
+	align-content: space-between;
+}
+
+

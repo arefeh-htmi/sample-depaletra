@@ -1,0 +1,73 @@
+@mixin btn($content,$btnType:"black",$bgColor:transparent){
+    display: inline-flex;
+    position: relative;
+    padding: 5px 2px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &:before{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        transform: translateY(100%);
+        background-color: $pinkBgColor;
+        transition: 500ms;
+        z-index: 70;
+    }
+    @if ($btnType=="white") {
+        border-bottom: 1px solid #fff;
+        &::after{
+            color: #fff;
+        }
+    }
+    @if ($btnType=="black"){
+        border-bottom: 1px solid #000;
+        &::after{
+            color: #000;
+        }
+    }
+    &:after{
+        content: $content;
+        font-size: 1.4rem;
+        letter-spacing: .1em;
+        word-spacing: .4em;
+        white-space: nowrap;
+        font-family: Arial, Helvetica, sans-serif;
+        z-index: 77;
+        transition: 500ms;
+
+    }
+    &:hover{
+        border-color: transparent;
+        &::after{
+            color: #000;
+        }
+        &::before{
+            transform:translateY(0);
+        }
+    }
+}
+.blackBtn{
+    @include btn("More About Us","black");
+}
+.newsBtn{
+    @include btn("More News","black");
+}
+.whiteBtn{
+    @include btn("Send Message","white");
+}
+.test{
+         @for $i from 1 to 6 {
+        &:nth-child($i) {
+          animation: music-#{$i} 3s infinite;
+          animation-timing-function: ease-in;
+          animation-delay: 200ms;
+        }
+      }
+}

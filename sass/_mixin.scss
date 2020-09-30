@@ -1,0 +1,291 @@
+/*--mixins*/ 
+/*item hover*/ 
+@mixin itemHover {
+    z-index: 2;
+    &::before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: 200ms;
+    }
+    &:hover{
+    color:$textColor; 
+        &::before{
+        background-color: $alphaPink; 
+        }
+    }
+}
+/*image hover*/ 
+@mixin imageHover{
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    &>div.socialBox,
+    &>span{
+        opacity: 0;
+        transition: 500ms 100ms;
+        transform: scale(1.5);
+        &::nth-child(2){
+            font-size: 1.5rem;
+        }
+    }
+    span{
+        display: block;
+        width: 100%;
+        font-size: 2.5rem;
+        letter-spacing: .15em;
+        word-spacing: .2em;
+        z-index: 1;
+        position: relative;
+        text-align: center;
+        margin: 20px 0;
+        opacity: 0;
+        &::nth-child(2){
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 1px solid #000;
+        }
+    }
+    &::before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 500ms 200ms;
+
+    }
+    &:hover{
+        div.socialBox,
+        span{
+        opacity: 1;
+        transform: scale(1);
+        transition: 500ms 100ms;
+        letter-spacing: .3em;
+
+    }
+        &::before{
+        transition: 500ms 200ms;
+        background-color: $alphaPink;
+        }
+    }
+}
+.image{
+    @include imageHover;
+}
+/* sicial box*/
+@mixin socialBox($sbKind:"null"){
+    display: flex;
+    flex-flow: row nowrap;
+    div[class^="icon-"]{
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        font-size: 2rem;
+        text-align: center;
+        line-height: 45px;
+        margin: 0px;
+        transition: 200ms;
+        position: relative;
+        overflow: hidden;
+        perspective: 200px;
+        &::before{
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transform: scale(0);
+            transition: 200ms;
+            background-color: $pinkBgColor;
+            
+        }
+        &::after{
+            z-index: 1;
+            transition: 200ms;
+
+        }
+        &:hover{
+            color:$textColor; 
+                &::before{
+                    transform: scale(1); 
+                }
+                &:after{
+                    transform: scale(1.2) ;
+    
+                }
+        } 
+
+    @if ($sbKind=="rotated") {
+        transition: 500ms;
+        &:hover{ 
+            transform:rotateY(360deg); 
+            &::before{
+                transform: scale(1); 
+                background-color: #000;
+            }
+            &:after{
+                transform: scale(1.2);
+                color:$pinkText; 
+
+            }
+        } 
+    }
+    }
+   
+}
+.socialBox{
+    @include socialBox("rotated");
+}
+.socialBoxMenu{
+    @include socialBox("null");
+}
+/* go top*/ 
+@mixin goTop{
+    @include box(65px,65px);
+    position: fixed;
+    z-index: 15000;
+    bottom:0;
+    transform: translateY(50%);
+    right: 40px;
+    &>input#go{
+        display: none;
+        &:checked{
+            &+label{
+                span{
+                top: 50%;
+                transform: rotate(90deg);
+                &:first-child{
+                    transform:rotate(-90deg);
+                }
+                }
+            }
+        }
+    }
+    &>label{
+        @include box(60px,60px,$pinkBgColor);
+        border-radius: 100%; 
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 500ms;
+        &>span{
+            @include box(1px,40%,#000);
+            display: block;
+            position: absolute;
+            top: 17%;
+            left: 50%;
+            font-size: 2.5rem;
+            transform-origin: center top;
+            transform:rotate(-45deg);
+            transition: 200ms;
+            &:first-child{
+                transform:rotate(45deg);
+            }
+        }
+        &:hover{
+            transform:scale(1.2);
+            &>span{
+                @include box(1px,35%,#000);
+    
+            }
+        }
+    }
+    
+}
+.goTop{
+    @include goTop;
+}
+/*shade box*/ 
+@mixin shadeBox{
+    width: 30vw;
+    height: 600px;
+    box-shadow: 0px 0px 50px 1px $darkBgColor;
+    background: center center/ cover no-repeat;
+    position: relative;
+    display: flex;
+        &>div{
+        display: block;
+        position: relative;
+        top: 100%;
+        left: 100%; 
+        transform: translate(-300%,10px);
+        outline-width: 2px;
+        outline-style: solid;
+        outline-offset: 0px;
+        outline-color: $menuBgColor;
+        color: $menuBgColor;
+        width:30px;
+        height: 30px;
+        font-size: 2.5rem;
+        line-height:3rem;
+        padding: 0 auto;
+        margin: 0 5px;
+        &:hover{
+            cursor: pointer;
+            color: $pinkBgColor;
+            outline-color: $pinkText;
+        }  
+        }
+       
+}
+.shadeBox{  
+    @include shadeBox;
+}
+
+/*dotted box*/ 
+.dottedBox{
+    @include box(200px,200px);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    position: absolute;
+    z-index: -1;
+    span{
+        width: 3px;
+        height: 3px;
+        margin: 0 0 22px 22px;
+        background-color:$pinkBgColor;
+        animation: dottedScale 10s infinite;
+    }
+  @keyframes dottedScale{
+      0%{
+        transform: scale(.1);     
+      }
+      50%{
+          transform: scale(1);
+      }
+      100%{
+        transform: scale(.1);
+    }  
+  }
+}
+/*bg*/ 
+@mixin Bg {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.fullBg{
+    @include Bg;
+    @include box(100%,100%);
+}
+.halfBg{    
+    @include Bg;
+    @include box(50%,50%);
+}

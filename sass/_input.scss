@@ -1,0 +1,65 @@
+@mixin contactForm {
+height: 50%;
+font-size: 2.5rem;
+padding: 50px 0px;
+label{
+    // position: absolute;
+    top: 0;
+    left: 0;
+}
+input[type="text"]{
+    height: 30px;
+}
+textarea{
+    height: 100px;
+    resize: none;
+    overflow: auto;
+}
+input[type="text"],
+textarea{
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid $grayText;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 400;
+    position: relative;
+    &::after{
+        content: '';
+        display: block;
+        top: 0;
+        left: 0;
+        position: absolute;
+        @include box(100%,2px,$grayText);
+    }
+}
+::placeholder{
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+input[type="submit"]{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fff;
+    border-bottom: 2px solid $grayText;
+    transition: 500ms;
+    position: relative;
+    display: block;
+    &::before{
+        content: '';
+        display: block;
+        @include box(100px,100px,$alphaPink);
+        transform: translateY(100%);
+    }
+    &:hover{
+        &:before{
+            transform: translate(0);
+        }
+        
+
+    }
+}
+}
+.contactForm{
+    @include contactForm
+}

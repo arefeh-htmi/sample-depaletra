@@ -1,0 +1,35 @@
+@mixin media ($device,$max:200px){
+
+    @if($device=="des"){ 
+ 
+@media screen and (min-width:900px){
+    @content;
+}
+
+    } 
+ 
+    @else if($device=="tab"){
+
+        @media screen and (max-width:900px){
+            @content;
+        }
+ 
+    }
+
+@else if($device=="mob"){
+
+
+@media screen and (max-width:600px){
+@content;
+}
+
+}
+@else if($device=="custom"){
+
+    @media screen and (max-width:$max){
+        @content;
+    }
+
+} 
+
+}

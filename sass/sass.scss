@@ -1,0 +1,174 @@
+@import "./config.scss";
+@import "./grid.scss";
+@import "./_possitions.scss";
+@import "./_mixin.scss";
+@import "./btn.scss";
+@import "./typo.scss";
+@import "./reset.scss";
+@import "./_input.scss";
+@import "./menu.scss";
+@import "./media.scss";
+@import "./_response.scss";
+
+div.slide{
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items:center; 
+    filter: brightness(95%);
+    @include box(100%,100%);
+    padding: 15% 30vw;
+    h1{
+        z-index: 900;
+        @keyframes h1before {
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 100%;
+            }
+        }
+        &::before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -200;
+            @include box(100%,100%,$pinkBgColor);
+            transform-origin: left center;
+            animation: h1before 1500ms 500ms 1;
+        }
+    }
+    h3{
+        background-color: #fff;
+    }
+    
+}
+.welcome{
+    padding: 5% 0;
+    &>.col-des-3-5{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: stretch;
+        height: stretch;
+        .col-des-1-2{
+            position: relative;
+            height:70%;
+            display: flex;
+            flex-flow:row wrap;
+            justify-content: flex-start;
+            align-items: center;
+            align-content: center;
+            .dottedBox{
+                top: 60%;
+                left: 45%;
+            }
+            p{
+                width: 100%;
+                margin: 30px 0;
+            }
+            
+        }
+    }
+}
+div.projects{
+    .col-des-2-3{
+        background-color: $lightBgColor;
+        padding: 15%;
+        z-index: -2;
+    }
+    .dottedBox{
+        top: 55%;
+    }
+}
+div.ourPeople{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    padding: 150px 0;
+    &>p,
+    &>div.coloredTitle{
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .hasImage{
+        width: 70%;
+        display: block;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-evenly;
+    }
+    .image{
+        width: 32%;
+        @include imageHover;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        
+    }
+
+}
+div.portifilio{
+    padding: 5% 0;
+    .hasImage{
+        padding: 0% 10%;
+        .image{
+            margin: 10px 20px;
+            height: 260px;
+            width:370px;
+        }
+    }   
+    .image{
+        width: 20%;
+        @include imageHover;
+    }
+}
+div.news{
+    padding: 90px 150px;
+ & *{
+    margin: 20px 0px ;
+ } 
+ & .col-des-1-4{
+    padding: 50px 30px ;
+    border: 1px solid $secoundColor;   
+    @include itemHover;
+    & *{
+        margin: 10px 0px ;
+        text-align: left;
+     } 
+} 
+.uperTitle{
+    margin: 5px 0px ;
+}  
+p{
+    &:last-child{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0px;
+        position: relative;
+        &::before{
+            content: '';
+            display: block;
+            @include box(50%,2px,#000);
+            position: absolute;
+            top: -15%;
+        }
+     }
+ } 
+}
+div.contactUs{
+    background-color: $menuBgColor;
+    .socialBoxMenu{
+        color: #fff;
+    }
+
+}
